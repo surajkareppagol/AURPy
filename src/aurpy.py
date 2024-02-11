@@ -29,10 +29,10 @@ class AURPy:
         """
 
         response = requests.get(self.url)
-        self.package_info = json.loads(response.json())
+        self.package_info = json.loads(response.text)
         self.package_count = self.package_info["resultcount"]
 
-    def build(package_install: str) -> None:
+    def build(self, package_install: str) -> None:
         base_path = getenv("HOME")
 
         if not path.isdir(f"{base_path}/.aurpy"):
@@ -45,7 +45,7 @@ class AURPy:
 
         os.chdir(package_install)
 
-        subprocess.call(["sudo", "makepkg", "-si"])
+        subprocess.call(["makepkg", "-si"])
 
     def display_info(self) -> None:
         """
@@ -71,7 +71,7 @@ class AURPy:
             if package_index.isdigit():
                 break
 
-        package_install = self.package_info["results"][package_index - 1]["Name"]
+        package_install = self.package_info["results"][int(package_index) - 1]["Name"]
 
         self.build(package_install)
 

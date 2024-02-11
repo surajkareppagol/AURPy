@@ -8,7 +8,7 @@ class Util:
 
         pass
 
-    def format_text(string: str, status: int) -> str:
+    def format_text(self, string: str, status: int) -> str:
         """
         Format text.
         Usage: format_text(string, status)

@@ -10,6 +10,7 @@ class Terminal(Console):
         Usage: console = Terminal()
         Returns: None
         """
+        super().__init__()
 
         self.table = Table()
 
@@ -37,7 +38,7 @@ class Terminal(Console):
                 else package["Description"]
             )
 
-            self.table.add_row(index, package["Name"], description)
+            self.table.add_row(str(index), package["Name"], description)
 
     def create_table(self, packages: int, columns: list, rows: list) -> Table:
         """
