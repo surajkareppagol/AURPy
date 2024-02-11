@@ -1,22 +1,17 @@
+[tool.poetry]
+name = "AURPy"
+version = "0.1.0"
+description = "Arch AUR Helper Written In Python."
+authors = ["surajkareppagol <surajkareppagol.dev@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+rich = "^13.7.0"
+
+[tool.poetry.dev-dependencies]
+
 [build-system]
-requires = ["hatchling", "requests", "rich"]
-build-backend = "hatchling.build"
-
-[project]
-name = "ArchAurPy"
-version = "0.0.1"
-authors = [
-  { name = "Suraj Kareppagol", email = "surajkareppagol.social@gmail.com" },
-]
-description = "Arch AUR helper written in python."
-readme = "README.md"
-requires-python = ">=3.8"
-classifiers = [
-  "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-  "Operating System :: POSIX :: Linux",
-]
-
-[project.urls]
-"Homepage" = "https://github.com/surajkareppagol/arch-aur-py"
-"Bug Tracker" = "https://github.com/surajkareppagol/arch-aur-py/issues"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
