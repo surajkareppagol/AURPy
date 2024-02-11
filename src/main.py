@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from sys import argv, exit
 
 from aurpy import AURPy
@@ -13,8 +11,7 @@ util = Util()
 if __name__ == "__main__":
     try:
         if len(argv) == 1:
-            # console.print(util.format_text("Provide A Package Name.", 0))
-            console.print("Hello")
+            console.print(util.format_text("Provide A Package Name.", 0))
             exit(1)
 
         package = argv[1]
@@ -23,4 +20,5 @@ if __name__ == "__main__":
 
         aurpy.install()
     except KeyboardInterrupt:
-        console.print(util.format_text("Terminated With CTRL + C."))
+        console.print(util.format_text("Terminated With CTRL + C.", 0))
+        exit(1)

@@ -2,12 +2,15 @@ import json
 import os
 import subprocess
 from os import getenv, path
+from sys import exit
 
 import requests
 
 from console import Terminal
+from util import Util
 
 console = Terminal()
+util = Util()
 
 
 class AURPy:
@@ -59,17 +62,32 @@ class AURPy:
 
         table = console.create_table(self.package_count, columns, rows)
 
-        console.print(
-            "[bold red]Warning[/bold red]: [bold white]This is just a experimental project, use it in virtual environment.[/bold white]"
-        )
+        def print_warning():
+            console.clear()
+            console.print_panel("[bold yellow]AURPy[/bold yellow] - AUR Helper")
+            console.print(
+                "[bold red]Warning[/bold red]: [bold white]This Is Just An Experimental Project, It Might Be Dangerous, Use It In A Virtual Environment.[/bold white]"
+            )
+
+        print_warning()
 
         console.print(table)
 
-        while True:
-            package_index = console.input("📦 Select One Package (1 or 2 or ...): ")
+        try:
+            while True:
+                package_index = console.input(
+                    f"📦 Select One Package (1, ..., {self.package_count}): "
+                )
 
-            if package_index.isdigit():
-                break
+                if package_index.isdigit() and int(package_index) <= self.package_count:
+                    break
+
+                print_warning()
+
+                console.print(table)
+        except KeyboardInterrupt:
+            console.print(util.format_text("Terminated With CTRL + C.", 0))
+            exit(1)
 
         package_install = self.package_info["results"][int(package_index) - 1]["Name"]
 

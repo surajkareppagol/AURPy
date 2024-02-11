@@ -43,7 +43,7 @@ class Terminal(Console):
     def create_table(self, packages: int, columns: list, rows: list) -> Table:
         """
         Create table.
-        Usage: create_table(packages, columns, rows)
+        Usage: console.create_table(packages, columns, rows)
         Returns: Table
         """
 
@@ -51,3 +51,12 @@ class Terminal(Console):
         self.add_rows(rows)
 
         return self.table
+
+    def print_panel(self, string: str) -> None:
+        """
+        Print message in panel.
+        Usage: console.print_panel(string)
+        Returns: None
+        """
+
+        super().print(Panel(string))

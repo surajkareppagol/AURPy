@@ -16,6 +16,6 @@ class Util:
         """
 
         if status:
-            return f"[red bold]Error[/red bold]: {string}"
+            return f"\n\n[green bold]Success[/green bold]: {string}"
         else:
-            return f"[green bold]Success[/green bold]: {string}"
+            return f"\n\n[red bold]Error[/red bold]: {string}"
